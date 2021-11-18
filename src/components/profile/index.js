@@ -24,7 +24,7 @@ const Profile = () => {
             <span>3</span>
           </div>
           <div>
-            <h4>Starreds</h4>
+            <h4>Starred</h4>
             <span>2</span>
           </div>
           <div>
