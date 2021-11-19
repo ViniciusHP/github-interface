@@ -1,4 +1,5 @@
 import React from 'react';
+import RepositoryItem from '../repository-item';
 import * as S from './styled';
 
 const Repositories = () => {
@@ -9,8 +10,16 @@ const Repositories = () => {
         <S.WrapperTab>Repositories</S.WrapperTab>
         <S.WrapperTab>Starred</S.WrapperTab>
       </S.WrapperTabList>
-      <S.WrapperTabPanel>panel Repository</S.WrapperTabPanel>
-      <S.WrapperTabPanel>panel Starred</S.WrapperTabPanel>
+      <S.WrapperTabPanel>
+        <RepositoryItem name="alvorecer"
+          linkToRepo="https://github.com/ViniciusHP/alvorecer"
+          fullName="ViniciusHP/alvorecer"/>
+      </S.WrapperTabPanel>
+      <S.WrapperTabPanel>
+        <RepositoryItem name="conversor-de-bases-numericas"
+          linkToRepo="https://github.com/ViniciusHP/conversor-de-bases-numericas"
+          fullName="ViniciusHP/conversor-de-bases-numericas"/>
+      </S.WrapperTabPanel>
   </S.WrapperTabs>); // Parte 4/8
 }
 
