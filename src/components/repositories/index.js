@@ -1,26 +1,51 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import useGithub from '../hooks/github-hooks';
 import RepositoryItem from '../repository-item';
 import * as S from './styled';
 
 const Repositories = () => {
-  return (<S.WrapperTabs
-    selectedTabClassName="is-selected"
-    selectedTabPanelClassName="is-selected">
-      <S.WrapperTabList>
-        <S.WrapperTab>Repositories</S.WrapperTab>
-        <S.WrapperTab>Starred</S.WrapperTab>
-      </S.WrapperTabList>
-      <S.WrapperTabPanel>
-        <RepositoryItem name="alvorecer"
-          linkToRepo="https://github.com/ViniciusHP/alvorecer"
-          fullName="ViniciusHP/alvorecer"/>
-      </S.WrapperTabPanel>
-      <S.WrapperTabPanel>
-        <RepositoryItem name="conversor-de-bases-numericas"
-          linkToRepo="https://github.com/ViniciusHP/conversor-de-bases-numericas"
-          fullName="ViniciusHP/conversor-de-bases-numericas"/>
-      </S.WrapperTabPanel>
-  </S.WrapperTabs>); // Parte 4/8
-}
+  const { githubState, getUserRepos, getUserStarred } = useGithub();
+  
+  const [hasUserForSearchRepos, setHasUserForSearchRepos] = useState(false);
+
+  useEffect(() => {
+    if(!!githubState.user.login) {
+      getUserRepos(githubState.user.login);
+      getUserStarred(githubState.user.login);
+    }
+    setHasUserForSearchRepos(!!githubState.repositories);
+  }, [githubState.user.login]);
+
+  const renderRepositoryItem = (item, key) => {
+    return (
+      <RepositoryItem name={item.name} key={item.id}
+        linkToRepo={item.html_url}
+        fullName={item.full_name}/>
+    )
+  }
+
+  return (
+  <>
+    {hasUserForSearchRepos ? (
+    <S.WrapperTabs
+      selectedTabClassName="is-selected"
+      selectedTabPanelClassName="is-selected">
+        <S.WrapperTabList>
+          <S.WrapperTab>Repositories</S.WrapperTab>
+          <S.WrapperTab>Starred</S.WrapperTab>
+        </S.WrapperTabList>
+        <S.WrapperTabPanel>
+          <S.WrapperList>
+            {githubState.repositories.map(renderRepositoryItem)}
+          </S.WrapperList>
+        </S.WrapperTabPanel>
+        <S.WrapperTabPanel>
+          <S.WrapperList>
+            {githubState.starred.map(renderRepositoryItem)}
+          </S.WrapperList>
+        </S.WrapperTabPanel>
+    </S.WrapperTabs>) : <></>}
+  </>);
+};
 
 export default Repositories;
