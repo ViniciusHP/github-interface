@@ -16,7 +16,7 @@
 
 ## **Sobre o projeto**
 
-Interface de busca de usuário do Github feita em ReactJS no bootcamp [Eduzz Fullstack Developer](https://digitalinnovation.one/bootcamps/eduzz-fullstack-developer) com a [Digital Innovation One](https://digitalinnovation.one/) e a [Matheus Benites](https://www.linkedin.com/in/benites-amorim/). [Link para o repositório original.](https://github.com/benits/github-api-interface)
+Interface de busca de usuário do Github feita em ReactJS no bootcamp [Eduzz Fullstack Developer](https://digitalinnovation.one/bootcamps/eduzz-fullstack-developer) com a [Digital Innovation One](https://digitalinnovation.one/) e o [Matheus Benites](https://www.linkedin.com/in/benites-amorim/). [Link para o repositório original.](https://github.com/benits/github-api-interface)
 
 ## **Executando o projeto**
 
